@@ -1,3 +1,3 @@
 # Oldagram - UI clone of Instagram
 
-<img width="503" alt="Screen Shot 2022-10-15 at 6 36 26 PM" src="https://user-images.githubusercontent.com/82247833/196013805-f340f0ab-0119-484d-b974-d06a0fb4afdd.png">
+<img width="503" alt="Screen Shot 2022-10-15 at 6 39 19 PM" src="https://user-images.githubusercontent.com/82247833/196013851-7f91f8a0-ca0a-4af1-a299-d7002dbbac1a.png">
