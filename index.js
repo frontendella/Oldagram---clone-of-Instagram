@@ -6,7 +6,8 @@ const posts = [
         avatar: "images/profile-1.jpg",
         post: "images/ocean.jpg",
         comment: "ocean always leaves a space for thought",
-        likes: 21
+        likes: 21,
+        liked: false
     },
     {
         name: "Samia Wilson",
@@ -15,7 +16,8 @@ const posts = [
         avatar: "images/profile-2.jpg",
         post: "images/balance.jpg",
         comment: "it's important to find a balance",
-        likes: 125
+        likes: 125,
+        liked: false
     },
     {
         name: "Brandon Bolton",
@@ -24,13 +26,13 @@ const posts = [
         avatar: "images/profile-3.jpg",
         post: "images/work.jpg",
         comment: "are you working today?",
-        likes: 151
+        likes: 151,
+        liked: false
     }
 ]
 
 const post = document.getElementById("main")
-
-
+let heart = "images/icon-heart.png"
 
 let html = ''
 for (let i = 0; i < posts.length; i++) {
@@ -41,9 +43,14 @@ for (let i = 0; i < posts.length; i++) {
         <p class="profile_data name">${posts[i].name}</p>
         <span class="country">${posts[i].location}</span>
     </div>
+    <div>
+    <svg class="heart-icon">
+        <use xlink:href="#icon-heart"></use>
+    </svg>
         <img src="${posts[i].post}" alt="First post" class="post_image">
+    </div> 
     <div class="icons">
-        <img src="images/like.svg" alt="like_button"" class="icon heart">
+        <img src = "${heart}" alt="like_button"" class="icon heart">
         <img src="images/icon-comment.png" alt="share_button" class="icon">
         <img src="images/icon-dm.png" alt="comment_button" class="icon">
     </div>
@@ -55,22 +62,54 @@ for (let i = 0; i < posts.length; i++) {
 post.innerHTML = html
 
 
+// To "like" and "unlike" the post
+let numberOfLikes = document.getElementsByClassName("likes")
+let userPost = document.getElementsByClassName("post_image")
+let likeBtn = document.getElementsByClassName("heart")
+const heartIcon = document.getElementsByClassName('heart-icon')
+let likeIcon = "images/like.png"
 
 
-const likeBtn = document.getElementsByClassName("heart")
-// likeBtn.addEventListener('click', () => {
-//     let currentLikes = document.getElementById("like")
-//     plusLike = Number(currentLikes.innerText.match(/\d+/g)) + 1
-//     currentLikes.textContent = `${plusLike} likes`
-// })
+for (let i = 0; i < userPost.length; i++) {
+    likeBtn[i].addEventListener("click", () => {
+        if (posts[i].liked == false) {
+            toLike(i)
+            updateLikes(numberOfLikes[i], i)
+        } else if (posts[i].liked == true) {
+            removeLike(i)
+            updateLikes(numberOfLikes[i], i)
+        }
+    })
+}
 
-// for (let i = 0; i < likeBtn.length; i++ ) {
-//     likeBtn[i].addEventListener("click", () => {
-//         let currentLikes = document.getElementById("like")
-//         likesUpdated()
-//     })
-// }
+for (let i = 0; i < userPost.length; i++) {
+    userPost[i].addEventListener("dblclick", () => {
+        if (posts[i].liked == false) {
+            toLike(i)
+            updateLikes(numberOfLikes[i], i)
+            doubleClicked(i)
+        }
+    })
+}
 
-// function likesUpdated(el, index){
-//     el.innerHTML = `${posts[index].likes} likes`
-// }
+const toLike = (i) => {
+    posts[i].liked = true
+    posts[i].likes += 1
+    likeBtn[i].src = likeIcon
+}
+
+const removeLike = (i) => {
+    posts[i].liked = false
+    posts[i].likes -= 1
+    likeBtn[i].src = heart
+}
+function updateLikes(el, index) {
+    el.innerHTML = `${posts[index].likes} likes`
+}
+
+function doubleClicked(i) {
+    heartIcon[i].classList.add('like');
+    setTimeout(() => {
+        heartIcon[i].classList.remove('like')
+    }, 1200)
+}

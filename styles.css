@@ -1,3 +1,4 @@
+/* Layout */
 html, body {
     margin: 0;
     padding: 0;
@@ -10,7 +11,6 @@ html, body {
     height: 530px;
     object-fit: cover;
     margin-bottom: 15px;
-
 }
 .container {
     display: flex;
@@ -30,29 +30,14 @@ html, body {
     float: left;
     margin: 5px 20px 20px 5px
 }
-
 .profile_data {
     margin-bottom: 7px;
-}
-
-
-.icon {
-    width: 37px;
-    height: 40px;
-    padding: 10px 7px 0px;
-}
-
-
-.icons {
-    padding-left: 10px
 }
 
 .each_post {
     background: #FFF;
     margin-bottom: 15px;
 }
-
-
 
 .logo-container {
     width: 500px;
@@ -69,10 +54,21 @@ html, body {
     height: 100px;
     object-fit: cover;
     padding: 0 20px 2px 10px;
-
 }
 .main-image{
     padding: 20px;
+}
+
+/* Icons under the post */
+
+.icon {
+    width: 37px;
+    height: 40px;
+    padding: 10px 7px 0px;
+}
+
+.icons {
+    padding-left: 10px
 }
 
 .likes {
@@ -97,3 +93,43 @@ html, body {
 .heart:focus {
     filter: invert(25%) sepia(76%) saturate(2606%) hue-rotate(351deg) brightness(91%) contrast(98%);
 }
+
+/* Double-clicked post - to "like" */
+.heart-icon{
+    position: absolute;
+    display: inline-block;
+    width: 110px;
+    opacity: 0;
+    fill: #E14E59;
+   stroke: black;
+}
+
+.heart-icon.like {
+    margin-left: 200px;
+    margin-top: 150px;
+    animation: 2s like-heart-animation ease-in-out forwards;
+}
+
+@keyframes like-heart-animation {
+    0%,
+    to {
+      opacity: 0;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    15% {
+      opacity: 0.9;
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+    30% {
+      -webkit-transform: scale(0.95);
+      transform: scale(0.95);
+    }
+    45%,
+    80% {
+      opacity: 0.9;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
