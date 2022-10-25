@@ -1,4 +1,4 @@
-# [Oldagram - UI clone of Instagram](https://frontendella.github.io/Oldagram---clone-of-Instagram/)
+# [Oldagram - UI clone of Instagram](https://frontendella.github.io/Oldagram---clone-of-Instagram/) 
 
 https://user-images.githubusercontent.com/82247833/197324067-e5c1eb21-6fc5-4d30-aee0-b63590286440.mp4
 
